@@ -1,22 +1,29 @@
 <template>
   <div>
-    {{msg}}
-    <tinymce-editor ref="editor"
-                    v-model="msg"
-                    :disabled="disabled"
-                    @onClick="onClick">
-    </tinymce-editor>
-    <button @click="clear">清空内容</button>
-    <button @click="disabled = true">禁用</button>
+   <section>
+     {{msg}}
+     <tinymce-editor ref="editor"
+                     v-model="msg"
+                     :disabled="disabled"
+                     @onClick="onClick">
+     </tinymce-editor>
+     <button @click="clear">清空内容</button>
+     <button @click="disabled = true">禁用</button>
+   </section>
+    <section>
+      <howler></howler>
+    </section>
   </div>
 </template>
 
 <script>
 
-  import TinymceEditor from './components/HelloWorld'
+  import TinymceEditor from './components/Edit'
+  import howler from './components/howler'
   export default {
     components: {
-      TinymceEditor
+      TinymceEditor,
+      howler
     },
     data () {
       return {

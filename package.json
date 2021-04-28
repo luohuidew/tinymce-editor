@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.8",
-    "tinymce": "^5.7.1",
     "core-js": "^3.6.5",
+    "howler": "^2.2.1",
+    "tinymce": "^5.7.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {

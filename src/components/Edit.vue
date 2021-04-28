@@ -58,9 +58,9 @@
           // content_css: `${this.baseUrl}/tinymce/skins/content/dark/content.css`, // 暗色系
           height: 300,
           plugins: this.plugins,
-          toolbar: this.toolbar,
-          branding: false,
-          menubar: false,
+          toolbar: true, // 隐藏工具栏
+          branding: false, // 品牌表示
+          menubar: true,  //隐藏菜单栏
           // 此处为图片上传处理函数，这个直接用了base64的图片形式上传图片，
           // 如需ajax上传可参考https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_handler
           images_upload_handler: (blobInfo, success) => {
