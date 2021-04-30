@@ -2,6 +2,8 @@
 
 <div class="tinymce-editor">
   <h1>howler.js 以下是声音组件与编辑器没关系 https://github.com/goldfire/howler.js</h1>
+  <wave ref="waveref"></wave>
+
   <button @click="laser" disabled>
      播放一段声音
   </button>
@@ -24,12 +26,16 @@
 </template>
 <script>
   import {Howl, Howler} from 'howler';
+  import wave from './wave'
 
   export default {
-
+    components: {
+      wave
+    },
     data () {
       return {
-        myValue: this.value
+        myValue: this.value,
+        isPause: false,
       }
     },
     mounted () {
@@ -52,14 +58,22 @@
         ontimeupdate() {
           console.log('updateTime')
         },
-        onfade(id) {
-          console.log(this.isPause)
-          _this.isPause ? _this.sound.play(id) : _this.sound.pause(id)
+        onfade() {
+          // console.log(_this.isPause, '监听fade')
+          //         if (!_this.isPause) {
+          //           _this.sound.pause(id)
+          //         }
         },
         onpause() {
           console.log('暂停')
+          _this.$refs.waveref.pause()
           _this.isPause = true
         },
+       onplay() {
+         console.log('监听播放')
+         _this.$refs.waveref.paly()
+         _this.isPause = false
+       },
          onstop() {
           console.log('停止了')
         },
@@ -109,12 +123,23 @@
       },
       fade() {
         this.sound.fade(0.5, 0, 1000, this.id2);
+        setTimeout(()=>{
+          this.sound.pause(this.id2)
+        },1000)
 
       },
       fade2() {
-        this.sound.fade(0, 0.5, 1000, this.id2);
+        this.sound.play(this.id2)
+        this.sound.fade(0, 0.5, 1200, this.id2);
 
       },
     },
   }
 </script>
+
+<style>
+  button {
+    width: 100px;
+    height: 50px;
+  }
+</style>

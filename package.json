@@ -28,6 +28,9 @@
     "env": {
       "node": true
     },
+    "globals": {
+      "SiriWave": true
+    },
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
@@ -35,7 +38,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": 1
+    }
   },
   "browserslist": [
     "> 1%",
